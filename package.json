@@ -1,9 +1,9 @@
 {
   "name": "code-completer",
-  "displayName": "code-completer",
+  "displayName": "Codex-AI",
   "publisher": "MohammedAbdulRaffay",
   "description": "AI-powered code suggestions using Gemini API",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "repository": {
   "type": "git",
   "url": "https://github.com/raffay69/CodexAI.git"
