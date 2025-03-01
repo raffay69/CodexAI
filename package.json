@@ -1,8 +1,13 @@
 {
   "name": "code-completer",
   "displayName": "code-completer",
-  "description": "",
+  "publisher": "MohammedAbdulRaffay",
+  "description": "AI-powered code suggestions using Gemini API",
   "version": "0.0.1",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/raffay69/CodexAI.git"
+  },
   "engines": {
     "vscode": "^1.97.0"
   },
@@ -42,7 +47,7 @@
     "commands": [
       {
         "command": "code-completer.code-completer",
-        "title": "code-completer"
+        "title": "CodexAI"
       }
     ],
     "activationEvents": [
