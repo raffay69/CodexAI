@@ -1,0 +1,74 @@
+{
+  "name": "code-completer",
+  "displayName": "code-completer",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.97.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onView:codeCompleterView"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+      "viewsContainers": {
+        "activitybar": [
+          {
+            "id": "codeCompleterSidebar",
+            "title": "CodexAI",
+            "icon": "media/ai.png"
+          }
+        ]
+    },
+    "views":{
+      "codeCompleterSidebar": [
+      {
+        "id": "codeCompleterView",
+        "name": "",
+        "type": "webview" 
+      }
+    ]
+    },
+    "keybindings": [
+        {
+            "command": "extension.requestNewSuggestion",
+            "key": "cmd+m", 
+            "when": "editorTextFocus"
+        }
+    ],
+    "commands": [
+      {
+        "command": "code-completer.code-completer",
+        "title": "code-completer"
+      }
+    ],
+    "activationEvents": [
+      "onCommand:code-completer.code-completer"
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "20.x",
+    "@types/vscode": "^1.97.0",
+    "@typescript-eslint/eslint-plugin": "^8.22.0",
+    "@typescript-eslint/parser": "^8.22.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.19.0",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.22.0"
+  }
+}
