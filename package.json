@@ -3,10 +3,10 @@
   "displayName": "Codex-AI",
   "publisher": "MohammedAbdulRaffay",
   "description": "AI-powered code suggestions using Gemini API",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
-  "type": "git",
-  "url": "https://github.com/raffay69/CodexAI.git"
+    "type": "git",
+    "url": "https://github.com/raffay69/CodexAI.git"
   },
   "engines": {
     "vscode": ">=1.96.0"
@@ -19,30 +19,30 @@
   ],
   "main": "./out/extension.js",
   "contributes": {
-      "viewsContainers": {
-        "activitybar": [
-          {
-            "id": "codeCompleterSidebar",
-            "title": "CodexAI",
-            "icon": "media/ai.png"
-          }
-        ]
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "codeCompleterSidebar",
+          "title": "CodexAI",
+          "icon": "media/ai.png"
+        }
+      ]
     },
-    "views":{
+    "views": {
       "codeCompleterSidebar": [
-      {
-        "id": "codeCompleterView",
-        "name": "",
-        "type": "webview" 
-      }
-    ]
+        {
+          "id": "codeCompleterView",
+          "name": "",
+          "type": "webview"
+        }
+      ]
     },
     "keybindings": [
-        {
-            "command": "extension.requestNewSuggestion",
-            "key": "cmd+m", 
-            "when": "editorTextFocus"
-        }
+      {
+        "command": "extension.requestNewSuggestion",
+        "key": "cmd+m",
+        "when": "editorTextFocus"
+      }
     ],
     "commands": [
       {
@@ -65,7 +65,7 @@
   "devDependencies": {
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
-    "@types/vscode": "^1.97.0",
+    "@types/vscode": "^1.96.0",
     "@typescript-eslint/eslint-plugin": "^8.22.0",
     "@typescript-eslint/parser": "^8.22.0",
     "@vscode/test-cli": "^0.0.10",
