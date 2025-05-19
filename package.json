@@ -9,7 +9,7 @@
   "url": "https://github.com/raffay69/CodexAI.git"
   },
   "engines": {
-    "vscode": "^1.97.0"
+    "vscode": ">=1.96.0"
   },
   "categories": [
     "Other"

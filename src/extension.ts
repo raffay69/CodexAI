@@ -12,9 +12,6 @@ let abort : AbortController|null  = null;
 let isExtensionRunning : boolean = false
 let apiKey : string  = "" 
 
-//"AIzaSyAAtso-e-0P_L1cScXTuOycmIuZscumQ2M"
-
-
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -137,7 +134,7 @@ let call = 0
 async function callLLM(codeBeforeCursor:string,codeAfterCursor:string , apiKey:string){
 	const genAI = new GoogleGenerativeAI(`${apiKey}`);
 	const model = genAI.getGenerativeModel({ 
-	model: "gemini-2.0-flash", 
+	model: "gemini-2.5-flash-preview-04-17", 
 	systemInstruction:`You are an **AI-powered coding assistant** embedded in VS Code, functioning like GitHub Copilot. Your role is to provide **real-time, context-aware inline code suggestions** by analyzing both the preceding and following code context.
 
 		### **Behavior:**  
