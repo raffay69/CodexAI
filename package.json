@@ -4,7 +4,7 @@
   "icon": "media/ai.png",
   "publisher": "MohammedAbdulRaffay",
   "description": "AI-powered code suggestions using Gemini API",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "https://github.com/raffay69/CodexAI.git"
