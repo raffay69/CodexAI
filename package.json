@@ -1,6 +1,7 @@
 {
   "name": "code-completer",
   "displayName": "Codex-AI",
+  "icon": "media/ai.png",
   "publisher": "MohammedAbdulRaffay",
   "description": "AI-powered code suggestions using Gemini API",
   "version": "0.0.4",
