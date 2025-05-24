@@ -3,11 +3,15 @@
   "displayName": "Codex-AI",
   "icon": "media/ai.png",
   "publisher": "MohammedAbdulRaffay",
-  "description": "AI-powered code suggestions using Gemini API",
-  "version": "0.0.5",
+  "description": "An AI code completion assistant powered by Gemini. Offers real-time ghost text suggestions in all languages — just press Tab to accept. 100% free, no hidden costs — simply plug in your Gemini API key and start coding smarter.",
+  "version": "0.0.6",
   "repository": {
     "type": "git",
     "url": "https://github.com/raffay69/CodexAI.git"
+  },
+  "galleryBanner": {
+  "theme": "dark",
+  "color": "#E0C097"
   },
   "engines": {
     "vscode": "^1.96.0"
@@ -38,13 +42,23 @@
         }
       ]
     },
-    "keybindings": [
-      {
-        "command": "extension.requestNewSuggestion",
-        "key": "cmd+m",
-        "when": "editorTextFocus"
-      }
-    ],
+    "contributes": {
+      "keybindings": [
+        {
+          "command": "extension.requestNewSuggestion",
+          "key": "ctrl+m",
+          "when": "editorTextFocus",
+          "linux": true,
+          "win": true
+        },
+        {
+          "command": "extension.requestNewSuggestion",
+          "key": "cmd+m",
+          "when": "editorTextFocus",
+          "mac": true
+        }
+        ]
+      },
     "commands": [
       {
         "command": "code-completer.code-completer",

@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 import { SidebarViewProvider } from './SidebarViewProvider';
 
 let typingTimeout: NodeJS.Timeout | null = null;
@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
 		isExtensionRunning = true 
 		vscode.workspace.onDidChangeTextDocument((event) => {
 			if(!isExtensionRunning){
-				return
+				return 
 			}
 			if (typingTimeout) {
 				clearTimeout(typingTimeout); 
@@ -52,7 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
 						if(!aiSuggestion.trim()){
 						isApiCallInProgress = true
                         aiSuggestion = await callLLM(codeBeforeCursor , codeAfterCursor , apiKey);
-						console.log(aiSuggestion?.replace('```','').replace("javascript",""))
+						console.log(aiSuggestion)
 						}
 						if(aiSuggestion.trim()){
 							isPending = true
@@ -71,11 +71,11 @@ export function activate(context: vscode.ExtensionContext) {
 		});
 	});
 	context.subscriptions.push(disposable);
-	vscode.languages.registerInlineCompletionItemProvider("javascript", {
+	vscode.languages.registerInlineCompletionItemProvider("*", {
 		async provideInlineCompletionItems(document, position, context, token) {
 			if (!aiSuggestion.trim()) return { items: [] };
 			const range  = new vscode.Range(position,position)
-			const completion = new vscode.InlineCompletionItem(aiSuggestion.replace(/```/g, '').replace(/javascript/gi, ''), range);
+			const completion = new vscode.InlineCompletionItem(aiSuggestion, range);
 			completion.command={
 				title:"suggestion accepted",
 				command:"extention.accepted"
@@ -134,7 +134,7 @@ let call = 0
 async function callLLM(codeBeforeCursor:string,codeAfterCursor:string , apiKey:string){
 	const genAI = new GoogleGenerativeAI(`${apiKey}`);
 	const model = genAI.getGenerativeModel({ 
-	model: "gemini-2.5-flash-preview-04-17", 
+	model: "gemini-2.5-flash-preview-04-17",
 	systemInstruction:`You are an **AI-powered coding assistant** embedded in VS Code, functioning like GitHub Copilot. Your role is to provide **real-time, context-aware inline code suggestions** by analyzing both the preceding and following code context.
 
 		### **Behavior:**  
@@ -253,8 +253,18 @@ async function callLLM(codeBeforeCursor:string,codeAfterCursor:string , apiKey:s
 			}
 		],
 		generationConfig: {
-		  maxOutputTokens: 1000,
-		  temperature: 0.1,
+			responseSchema: {
+				type: SchemaType.OBJECT,
+				properties: {
+					code: {
+					type: SchemaType.STRING,
+					description: "The code snippet only"
+					}
+				},
+				required: ["code"]
+				},
+			maxOutputTokens: 1000,
+			temperature: 0.1,
 		}	
 	},
 	{signal}
